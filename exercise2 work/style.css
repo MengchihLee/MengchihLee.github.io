@@ -1,0 +1,160 @@
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+  margin: 0;
+}
+
+:root{
+  /* first two colours come from Kuroi's Manga Pallete Palette */
+  /* https://lospec.com/palette-list/manga-pallete */
+  --col-01:#171219;
+  --col-02:#f2fbeb;
+  --col-03:#5252ff;
+  --col-04:#b6e878;
+  font-size: 16px;
+}
+
+body{
+  padding: 1rem;
+  background-color: var(--col-02);
+  color: var(--col-01);
+  transition: background-color 1s ease-in-out;
+}
+
+section{
+  margin-bottom: 2rem;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2{
+  font-size: 2rem;
+}
+
+p{
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+figcaption{
+  width: fit-content;
+}
+
+dl ul{
+  margin-bottom: 0;
+}
+
+li{
+  font-size: 1rem;
+}
+
+dd{
+  padding-left: 60px;
+}
+
+li ul{
+  padding-left: 40px;
+}
+
+.img-wrapper{
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.img-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-img {
+  width: 80%;
+}
+
+.res-columns {
+  column-width: 25rem;
+}
+
+nav a {
+  color: var(--col-01);
+}
+
+header h1:hover{
+  color: #5252ff;
+}
+
+/* feedback 1 */
+nav ol li.feedback1 a{
+  display: inline-block;
+  transition: transform 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+nav ol li.feedback1 a:hover {
+  transform: translateX(4px);
+  color: var(--col-01);
+}
+
+/* feedback 2 */
+nav ol li.feedback2 a {
+  display: inline-block;
+  transition: 0s;
+}
+
+nav ol li.feedback2 a:hover {
+  transition: 1s;
+  transform: scale(1.1);
+}
+
+/* feedback 3 */
+nav ol li.feedback3 a {
+  display: inline-block;
+  max-width: 150px;
+  position: relative;
+  text-decoration: none;
+}
+
+nav ol li.feedback3 a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  top: 90%;
+  left: 0;
+  background-color: var(--col-01);
+  transform-origin: left bottom;
+  transition: transform 1s ease 0s;
+}
+
+nav ol li.feedback3 a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+/* medium devices 600 - 992 */
+@media only screen and (min-width: 600px) {
+  :root{
+    font-size: 20px;
+  }
+  
+  .img-wrapper{
+    width: 75%;
+    margin: 1.5rem auto;
+  }
+}
+
+/* medium devices 992 + */
+@media only screen and (min-width: 992px) {
+  :root{
+    font-size: 24px;
+  }
+
+  .img-wrapper{
+    max-width: fit-content;
+    float: right;
+    margin: 1.5rem;
+  }
+}
