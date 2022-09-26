@@ -1,0 +1,56 @@
+<!-- This exercise is built off the MDN Video and Audio APIs tutorial written by MDN contributors  -->
+<!-- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs -->
+<!-- The base files from the example were modified and filled in via the tutorial and some extra commenting by Patrick McMahon -->
+<!-- Orginal Files: https://github.com/mdn/learning-area/blob/main/javascript/apis/video-audio/start/media-player-start.zip -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <h3>Video playback  </h3>
+    <div class="content">
+      <div class="video-wrap">
+        <video src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"></video>
+        <div class="control">
+          <div class="play_pause" id="triangle-right"></div>
+          <div>
+            <span class="progress"></span>
+          </div>
+          <div class="timer">
+            <span class="progress_timer">00:00:00</span>/
+            <span class="duration_timer">00:00:00</span>
+          </div>
+          <div class="rate">
+            <span>Rate</span>
+            <select id="selRate">
+              <option value="0.5">0.5</option>
+              <option value="1" selected>1.0</option>
+              <option value="1.25">1.25</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2.0</option>
+            </select>
+          </div>
+          <div class="expand">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.85714 12.8571H0V20H7.14286V17.1429H2.85714V12.8571ZM0 7.14286H2.85714V2.85714H7.14286V0H0V7.14286ZM17.1429 17.1429H12.8571V20H20V12.8571H17.1429V17.1429ZM12.8571 0V2.85714H17.1429V7.14286H20V0H12.8571Z"
+                fill="white"></path>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="custom-player.js"></script>
+
+
+</html>

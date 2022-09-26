@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 去掉全屏时显示的自带控制条 */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+.wrap h3 {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+}
+
+.video-wrap {
+  width: 740px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+
+}
+
+.video-wrap video {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+}
+
+.video-wrap .control {
+  position: absolute;
+  width: 720px;
+  height: 40px;
+  border-radius: 5px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+}
+
+.video-wrap .control div {
+  display: inline-block;
+  line-height: 40px;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.video-wrap .control .play_pause,
+.video-wrap .control .expand {
+  color: rgb(255, 255, 0);
+}
+
+.video-wrap .control div:nth-child(2) {
+  width: 400px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.video-wrap .control .progress {
+  display: block;
+  width: 10%;
+  height: 10px;
+  background: #fff;
+}
+
+.video-wrap .control .timer {
+  font-size: 12px;
+}
+
+#triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid #f4f7f4;
+}
