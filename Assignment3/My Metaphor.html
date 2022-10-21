@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style type="text/css">
+		body { background:#f1f1f1 url('bg.jpg') repeat center top; }
+		.wrap { width: 960px; /*height: 1800px;*/ margin: 0 auto; padding: 0 20px; background: white; border: 1px solid #ddd; }
+		h1 { text-align: center; font-weight: bold; margin-top: 5rem; padding: 5rem 0; background: lightyellow; }
+		.cook h2 { margin: 1rem auto 1rem auto; margin-top: 20px; text-align: center; font-size: 22px; }
+		.vegetabletype h2, .meattype h2 { margin: 1rem auto 1rem auto; /*margin-top: 20px;*/ text-align: center; font-size: 16px; }
+		h3 { color: #aaa; float: right;}
+		.food { margin-top: 2rem; /*overflow: hidden;*//*清除浮动*/ }
+		/*清除浮动*/
+		/*.cook:after{*/
+		.pot:after{
+		    content:"";
+		    display:block;
+		    visibility:hidden;
+		    clear:both;
+
+		}
+		/*.foodtype { margin-top: 5rem; }*/
+		.vegetabletype, .meattype { margin-top: 2rem; position: relative; }
+
+		.vegetable, .meat { width: 22%; /*float: left;*/ text-align: center; background-color: #eee; padding: 20px 8px; border-radius: 50%; /*background: #f1f1f1 url('food_bg.jpg') repeat left top;*/ }
+		.vegetable:hover, .meat:hover { cursor: pointer; background-color: #ddd; border: 1px solid #eee; }
+		/*.vegetable img, .meat img { width: 170px; position: absolute;}*/
+		/*.vegetable .thumb, .meat .thumb { width: 160px; }*/
+		.vegetable img, .meat img { border-radius: 50%; border: 1px solid #aaa; }
+
+		.vegetablename, .meatname { text-align: center; width:25%; float: left; font-size: 12px; color: #888; }
+
+		/*#broccoli { position: absolute; left: 0px; top: 100px; }*/
+		/*区分大小写*/
+		#Broccoli { position: absolute; left: 0px; top: 50px; }
+		#Lettuce { position: absolute; left: 240px; top: 50px; }
+		#Tomato { position: absolute; left: 480px; top: 50px; }
+		#Bok-Choy { position: absolute; left: 720px; top: 50px; }
+		#Beef { position: absolute; left: 0px; top: 50px; }
+		#Lamb { position: absolute; left: 240px; top: 50px; }
+		#Chicken { position: absolute; left: 480px; top: 50px; }
+		#Egg { position: absolute; left: 720px; top: 50px; }
+
+
+
+		.cook { margin-top: 5rem; }
+		.pot { text-align: center; /*margin: 0 auto;*/ margin-top: 5rem; position: relative; }
+		/*.pot:hover { background-color: rgba(120, 100, 88, .8); }*/
+		.left { /*width: 75%; float: left;*/ width:100px; }
+		.right { /*width: 25%; float: left;*/ position: absolute; top: 80%; left: 75%;  }
+		input { /*display: block; margin-top: 40%;*/ background-color: #927B6E; border-radius: 10px; font-size: 26px; font-weight: bolder; border: 1px solid; orangered; padding: 5px;
+			color: whitesmoke; }
+		input:hover { background: floralwhite; color: red; cursor: pointer; }
+
+		.floatDiv {
+			/*width: 200px;*/
+			width: auto;
+			/*position: absolute;*/
+			position: absolute;
+			/*left: 0px;*/
+			/*top: 0px;*/
+			border: 1px solid orange;
+			/*很重要*/			
+			pointer-events: none;
+			z-index: 999;
+		}
+		/*.floatImg {*/
+		img.floatImg {
+			/*width: 60%;*/
+			width: 350px;
+			/*width: auto;*/
+			/*height: 60%;*/
+			/*height: auto;*/
+		}
+		
+		img#potpic { width: 960px; /*height: 240px;*/ border: 1px solid #ddd; border-radius: 20px; }
+		.blankline { width: 100%; height: 230px; }
+		.slogan { font-size: 40px; text-align: center; color: #aaa; margin-top: 80px; padding: 20px; }
+	</style>
+
+	<title>MY METAPHOR</title>
+</head>
+<body>
+	<div class="wrap">
+		<h1>MY METAPHOR</h1>
+
+		<div class="cook">
+			<h2>Are you troubled by not knowing what to eat?</h2>
+			<h3>----Just drag and drop the food below into the pot!</h3>
+			<!-- <div class="blankline"></div> -->
+			<div class="pot">
+				<div class="left">
+					<!-- <img src="pot.png" id="potpic" width="450px"> -->
+					<img src="pot.jpg" id="potpic">
+				</div>
+				<div class="right">
+					<!-- <input type="button" onclick="javascript:window.open('Dish-finished.html', '_blank');" value="COOK"> -->
+					<input type="button" onclick="cook()" value="COOK">
+					<input type="button" onclick="javascript:location.reload();" value="CLEAN">
+					<!-- <input type="button" onclick="javascript:open('My Metaphor.html', '_self');" value="CLEAN"> -->
+				</div>
+
+			</div>
+		</div>
+
+		<div class="food">
+
+			<div class="vegetabletype">
+				<h2>Vegetables(only one can be selected each dish):</h2>
+				<div class="blankline"></div>
+
+				<div class="vegetable" id="Broccoli">
+					<!-- <img src="Broccoli.png" title="Broccoli" onclick="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)"> -->
+					<img src="Broccoli.png" title="Broccoli" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="vegetablename">
+					Broccoli
+				</div>
+
+				<div class="vegetable" id="Lettuce">
+					<img src="Lettuce.png" title="Lettuce" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="vegetablename">
+					Lettuce
+				</div>
+				<div class="vegetable" id="Tomato">
+					<img src="Tomato.png" title="Tomato" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="vegetablename">
+					Tomato
+				</div>
+				<div class="vegetable" id="Bok-Choy">
+					<img src="Bok Choy.png" title="Bok Choy" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="vegetablename">
+					Bok Choy
+				</div>
+			</div>
+
+			<!-- <div class="blankline"></div> -->
+			<div class="meattype">
+				<h2>Meat(only one can be selected each dish):</h2>
+
+				<div class="blankline"></div>
+				<div class="meat" id="Beef">
+					<img src="Beef.png" title="Beef" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="meatname">
+					Beef
+				</div>
+				<div class="meat" id="Lamb">
+					<img src="Lamb.png" title="Lamb" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="meatname">
+					Lamb
+				</div>
+				<div class="meat" id="Chicken">
+					<img src="Chicken.png" title="Chicken" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="meatname">
+					Chicken
+				</div>
+				<div class="meat" id="Egg">
+					<img src="Egg.png" title="Egg" onmouseover="zoom(this)" onmousemove="move(event)" onmouseout="destroy(this)">
+				</div>
+				<div class="meatname">
+					Egg
+				</div>
+			</div>
+		</div>
+		
+		<h2 class="slogan">Choose The Food, Learn To Cook Dish!</h2>
+		
+	</div>
+
+	
+	<script type="text/javascript">
+		function zoom(obj) {
+			var floatDiv = document.createElement("div");
+			floatDiv.className = "floatDiv";
+			// var parent = obj.parentNode;
+			// parent.appendChild(floatDiv);
+			var p = obj.parentNode.parentNode;
+			p.appendChild(floatDiv);
+
+			var img = document.createElement("img");
+			img.className = "floatImg";
+			img.src = obj.title + "_large.jpg";
+			// alert(img.src);
+			floatDiv.appendChild(img);
+		}
+
+		function move(event) {
+			vent = event || window.event;
+			var left = event.clientX;
+			var top = event.clientY;
+			
+			// document.title = left + " -- " + top;
+			var floatDiv = document.getElementsByClassName("floatDiv")[0];
+			floatDiv.style.left = left - 280 + "px";
+			floatDiv.style.top = top - 480 + "px";
+			// floatDiv.style.left = floatDiv.offsetLeft + "px";
+			// floatDiv.style.top = floatDiv.offsetTop + "px";
+			// console.log(floatDiv.style.left + " -- " + floatDiv.style.top);
+			// console.log(floatDiv.offsetLeft + " ** " + floatDiv.offsetTop);
+		}
+
+		function destroy(obj) {
+			var floatDiv = document.getElementsByClassName("floatDiv")[0];
+			if (floatDiv) {
+				floatDiv.remove();
+			}
+			obj.src = obj.title + ".png";	
+		}
+
+		
+
+
+
+		// 初始化拖放对象
+	    // var box = document.getElementById("broccoli");
+	    // 获取页面中被拖放元素的引用指针
+	    // box.style.position = "absolute";  // 绝对定位
+	    // box.style.width = "300px";  // 定义宽度
+	    // box.style.height = "300px";  // 定义高度
+	    // box.style.backgroundColor = "red";  // 定义背景色
+	    // 初始化变量，标准化事件对象
+	    var mx, my, ox, oy;  // 定义备用变量
+	    function e(event){  // 定义事件对象标准化函数
+	        if( ! event){  // 兼容IE浏览器
+	            event = window.event;
+	            event.target = event.srcElement;
+	            event.layerX = event.offsetX;
+	            event.layerY = event.offsetY;
+	        }
+	        event.mx = event.pageX || event.clientX + document.body.scrollLeft;
+	        // 计算鼠标指针的x轴距离
+	        event.my = event.pageY || event.clientY + document.body.scrollTop;
+	        // 计算鼠标指针的y轴距离
+	        return event;  // 返回标准化的事件对象
+	    }
+
+	     // 定义鼠标事件处理函数
+	    document.onmousedown = function(event){  // 按下鼠标时，初始化处理
+	    // function drag(event) {
+	        event = e(event);  // 获取标准事件对象
+	        o = event.target;  // 获取当前拖放的元素
+	        ox = parseInt(o.offsetLeft);  // 拖放元素的x轴坐标
+	        oy = parseInt(o.offsetTop);  // 拖放元素的y轴坐标
+	        mx = event.mx;  // 按下鼠标指针的x轴坐标
+	        my = event.my;  // 按下鼠标指针的y轴坐标
+	        document.onmousemove = mousemove;  // 注册鼠标移动事件处理函数
+	        document.onmouseup = stop;  // 注册松开鼠标事件处理函数
+	    }
+
+	    function mousemove(event){  // 鼠标移动处理函数
+	        event = e(event);
+	        o.style.left = ox + event.mx - mx  + "px";  // 定义拖动元素的x轴距离
+	        o.style.top = oy + event.my - my + "px";  // 定义拖动元素的y轴距离
+	    }
+	    function stop(event){  // 松开鼠标处理函数
+	       event = e(event);
+	       ox = parseInt(o.offsetLeft);  // 记录拖放元素的x轴坐标
+	       oy = parseInt(o.offsetTop);  // 记录拖放元素的y轴坐标
+	       mx = event.mx ;  // 记录鼠标指针的x轴坐标
+	       my = event.my ;  // 记录鼠标指针的y轴坐标
+	       o = document.onmousemove = document.onmouseup = null;
+	       // 释放所有操作对象
+	    }
+
+	    // var vegetables = document.getElementsByClassName("vegetable");
+	    // for (i=0; i<vegetables.length; i++) {
+	    // 	drag(event);
+	    // }
+
+
+	    //获得元素的坐标与大小。
+		function findPosition(oElement) {
+		    var x2 = 0;
+		    var y2 = 0;
+		    var width = oElement.clientWidth;
+		    var height = oElement.clientHeight;
+		    //alert(width + "=" + height);
+		    if (typeof (oElement.offsetParent) != 'undefined') {
+		        for (var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent) {
+		            posX += oElement.offsetLeft;
+		            posY += oElement.offsetTop;
+		        }
+		        x2 = posX + width;
+		        y2 = posY + height;
+		        return [posX, posY, x2, y2, width, height];
+
+		    } else {
+		        x2 = oElement.x + width;
+		        y2 = oElement.y + height;
+		        return [oElement.x, oElement.y, x2, y2, width, height];
+		    }
+		}
+
+		function foodchoose(foodtype) {
+			if (!foodtype) {
+				return false;
+			}
+			var pot = document.getElementById("potpic");
+			// var Broccoli = document.getElementById("Broccoli");
+			console.log("锅的位置----" + findPosition(pot))
+			// console.log(findPosition(Broccoli));
+
+			pot_position = findPosition(pot);
+			var foods = document.getElementsByClassName(foodtype);
+			food_name = "";
+			food_count = 0;
+			// for (i=0; i<foods.length; i++) {
+			for (var i=0; i<foods.length; i++) {
+				food_position = findPosition(foods[i]);
+				console.log(foods[i].id + " 的位置----" + food_position);
+				
+				if ((food_position[2] > pot_position[0] && food_position[3] > pot_position[1]) &&
+					(food_position[0] < pot_position[2] && food_position[1] < pot_position[3])) {
+					console.log(foods[i].id + "在锅里！");
+					food_name = foods[i].id;
+					food_count++;
+				}
+			}
+			if (food_count != 1) {
+				alert("必须且只能选择一种" + foodtype + "\n你选择了" + food_count + "种" + foodtype + "，请重新选择！");
+				return false;
+			} else {
+				return food_name;
+			}
+			
+			// vetetable_postion = findPosition();
+		}
+		function cook() {
+			foodtypes = ["vegetable", "meat"];
+			allfood = []
+
+			// for (i=0; i<foodtypes.length; i++) {
+			for (var i=0; i<foodtypes.length; i++) {
+				// console.log(foodtypes[i]);
+				food = foodchoose(foodtypes[i]);
+				// alert("cook()" + food);
+				// console.log("获取到食物");
+				// console.log(typeof food[1]);
+				console.log(foodtypes);
+
+				if (food) {
+					allfood.push(food);
+				} else {
+					return false;
+				}
+			}
+			// console.log("allfood ---- " + allfood);
+			var allfoodstr = allfood.toString();
+			// switch(allfood) {
+			switch(allfoodstr) {
+				case ("Broccoli,Beef"):
+					// alert("Broccoli,Beef");
+					open("https://www.justataste.com/easy-beef-and-broccoli-recipe/", "_self");
+					break;
+				case ("Broccoli,Lamb"):
+					open("https://www.williams-sonoma.com/recipe/stir-fried-lamb-with-broccoli-and-mushrooms.html", "_self");
+					break;
+				case ("Broccoli,Chicken"):
+					open("https://healthyfitnessmeals.com/chicken-and-broccoli/", "_self");
+					break;
+				case ("Broccoli,Egg"):
+					open("https://www.healthyseasonalrecipes.com/broccoli-egg-bake/", "_self");
+					break;
+				case ("Lettuce,Beef"):
+					open("https://iowagirleats.com/korean-beef-lettuce-wraps/", "_self");
+					break;
+				case ("Lettuce,Lamb"):
+					open("https://thedefineddish.com/greek-lamb-lettuce-cups-with-a-mint-yogurt-sauce/", "_self");
+					break;
+				case ("Lettuce,Chicken"):
+					open("https://joyfoodsunshine.com/asian-chicken-lettuce-wraps/", "_self");
+					break;
+				case ("Lettuce,Egg"):
+					open("https://www.eatingwell.com/recipe/263361/egg-salad-lettuce-wraps/", "_self");
+					break;
+				case ("Tomato,Beef"):
+					open("https://thewoksoflife.com/beef-tomato-stir-fry/", "_self");
+					break;
+				case ("Tomato,Lamb"):
+					open("https://www.errenskitchen.com/sicilian-lamb/", "_self");
+					break;
+				case ("Tomato,Chicken"):
+					open("https://www.wellplated.com/chicken-and-tomatoes/", "_self");
+					break;
+				case ("Tomato,Egg"):
+					open("https://thewoksoflife.com/stir-fried-tomato-and-egg/", "_self");
+					break;
+				case ("Bok Choy,Beef"):
+					open("https://www.spendwithpennies.com/beef-bok-choy-stir-fry/", "_self");
+					break;
+				case ("Bok Choy,Lamb"):
+					open("https://globalkitchentravels.com/lamb-bok-choy-noodle-stir-fry/", "_self");
+					break;
+				case ("Bok Choy,Chicken"):
+					open("https://rasamalaysia.com/bok-choy-chicken/", "_self");
+					break;
+				case ("Bok Choy,Egg"):
+					open("https://www.hirokoliston.com/bok-choy-egg-with-oyster-sauce/", "_self");
+					break;
+				default:
+					alert("很抱歉，没找到您的菜肴！");
+			}
+
+		}
+
+	</script>
+</body>
+</html>
